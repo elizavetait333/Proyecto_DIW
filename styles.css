@@ -1,0 +1,18 @@
+.main-content{
+    min-height: 300vh;
+}
+
+.carousel, .carousel-item img{
+    max-height: 700px;
+}
+.card iframe{
+    height: 300px;
+}
+@media only screen and (max-width: 576px) {
+    .main-content{
+        min-height: 300vh;
+    }
+    .carousel, .carousel-item img{
+        max-height: 250px;
+    }
+}
