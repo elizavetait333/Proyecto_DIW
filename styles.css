@@ -1,18 +1,357 @@
-.main-content{
-    min-height: 300vh;
+*{
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none !important;
 }
-
-.carousel, .carousel-item img{
-    max-height: 700px;
+.main-content {
+  min-height: 100vh;
+  height: auto;
 }
-.card iframe{
-    height: 300px;
+nav{
+  background-color: #24262b;
+}
+.carousel,
+.carousel-item img {
+  max-height: 700px;
+}
+.card iframe {
+  height: 300px;
 }
 @media only screen and (max-width: 576px) {
-    .main-content{
-        min-height: 300vh;
-    }
-    .carousel, .carousel-item img{
-        max-height: 250px;
-    }
+  .main-content {
+    min-height: 300vh;
+  }
+  .carousel,
+  .carousel-item img {
+    max-height: 250px;
+  }
+  
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.container .album {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.container .album .outer {
+  height: 550px;
+  width: 550px;
+  border-radius: 50%;
+  background-color: #303030;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 0;
+  position: relative;
+  left: -15%;
+  transform: rotate(0deg);
+  animation: rotateVinyl 20s linear infinite;
+  animation-play-state: paused;
+}
+.container .album .outer.running{
+  animation-play-state: running;
+}
+.note {
+  position: absolute;
+  width: 20px; /* Ajusta el tamaño de las notas según tus necesidades */
+  height: 40px;
+  background-color: #ffcc00; /* Color de las notas musicales */
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.note1 {
+  top: 25%;
+  left: 25%;
+}
+
+.note2 {
+  top: 75%;
+  left: 75%;
+}
+
+.noot-1,
+.noot-2,
+.noot-3,
+.noot-4 {
+  position: absolute;
+  animation: notes 2s infinite linear;
+  animation-play-state: paused;
+  font-size: 35px;
+  opacity: 0;
+  color: blue;
+}
+.noot-1.active,
+.noot-2.active,
+.noot-3.active,
+.noot-4.active{
+  animation-play-state: running;
+} 
+.noot-1 {
+  top: -25px;
+  left: 70%;
+  animation-delay: 0.5s;
+}
+.video_oculto {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+}
+.noot-2 {
+  top: 30px;
+  left: 80%;
+  animation-delay: 1s;
+}
+
+.noot-3 {
+  top: 90px;
+  left: 80%;
+  animation-delay: 1.5s;
+}
+
+.noot-4 {
+  top: 200px;
+  left: 90%;
+  animation-delay: 2s;
+}
+
+@keyframes notes {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) translate(50%, -50%);
+  }
+  80% {
+    opacity: 0;
+    transform: scale(1.5) translate(100%, -100%);
+  }
+  100% {
+    transform: scale(1.5) translate(100%, -100%);
+    opacity: 0;
+  }
+}
+.controls {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.play-btn {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.play-btn span {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 30px;
+  border-radius: 2px;
+  background-color: white;
+  transition: 0.5s all;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.play-btn span:nth-child(2) {
+  left: 55%;
+  transform-origin: center;
+}
+
+.play-btn.pause span:nth-child(2) {
+  transform: translateY(-50%) scaleY(0);
+}
+
+.play-btn.pause span:nth-child(1) {
+  width: 35%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.play-btn.pause {
+  animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0;
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4);
+  }
+}
+.btn {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.forward-btn span{
+  width: 30px;
+  height: 20px;
+  clip-path: polygon(0 0, 0% 100%,100% 50%,100% 50%);
+  background-color: white;
+}
+.backward-btn span{
+  width: 30px;
+  height: 20px;
+  clip-path: polygon(100% 100%, 0% 50%, 0% 50%, 100% 0%);
+  background-color: white;
+}
+
+.container .album .card {
+  height: 600px;
+  width: 550px;
+  position: relative;
+  left: 10%;
+  background-image: url("img/disco_3.jpg");
+  background-size: 100% 100%;
+  z-index: 1;
+}
+.container .album .outer .inner {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-image: url("img/disco_3.jpg");
+  background-size: 100% 100%;
+}
+
+@keyframes rotateVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body{
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.container{
+  max-width: 1170px;
+  margin:auto;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul{
+  list-style: none;
+}
+.footer{
+  background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+
+@media(max-width:767px){
+
 }
